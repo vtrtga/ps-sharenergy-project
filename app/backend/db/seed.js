@@ -1,15 +1,19 @@
 
 const database = 'PSApp';
-const collection = 'user';
+const userCollection = 'user';
+const customerCollection = 'customer';
 
 use(database);
 
-db.createCollection(collection);
+db.createCollection(userCollection);
+db.createCollection(customerCollection);
 
 db.user.drop();
+db.customer.drop();
+
 db.user.insertMany([
   {
-    "id": "1",
+    "_id": "1",
     "name": "Joe Smith",
     "username": "desafiosharenergy",
     "password": "sh@r3n3rgy",
@@ -17,7 +21,7 @@ db.user.insertMany([
     "gender": "female"
   },
   {
-    "id": "2",
+    "_id": "2",
     "name": "Johann Smith",
     "username": "desafiosharenergy2",
     "password": "sh@r3n3rgy2",

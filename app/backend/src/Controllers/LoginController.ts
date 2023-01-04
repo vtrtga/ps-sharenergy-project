@@ -15,8 +15,8 @@ export default class LoginController {
   }
 
   async handleLogin() {
-    const { username } = this.req.body;
-    const user = await this.service.login(username);
+    const { body } = this.req;
+    const user = await this.service.login(body);
 
     return this.res.status(200).json(user);
   }

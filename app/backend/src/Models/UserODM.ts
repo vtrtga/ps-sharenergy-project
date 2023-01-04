@@ -11,7 +11,7 @@ export default class UserODM extends AbstractODM<IUser> {
       name: { type: String, required: true },
       username: { type: String, required: true },
       password: { type: String, required: true },
-    });
+    }, { collection: 'user' });
 
     super('user', schema);
   }

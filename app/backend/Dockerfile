@@ -10,6 +10,6 @@ COPY . .
 
 RUN chown node:node /app-backend
 
-EXPOSE 3001
+USER node
 
-CMD [ "npm", "run", "dev"]
+CMD [ "npm", "run", "dev" ]

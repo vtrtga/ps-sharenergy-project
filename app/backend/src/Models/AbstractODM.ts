@@ -32,6 +32,7 @@ export default abstract class AbstractODM<T> {
   }
 
   public async getOne(obj: IUserLogin): Promise<T | null> {
+    console.log(obj);
     return this.model.findOne({ username: obj.username });
   }
 
