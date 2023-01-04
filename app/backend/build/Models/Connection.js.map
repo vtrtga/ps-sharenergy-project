@@ -1,1 +1,1 @@
-{"version":3,"file":"Connection.js","sourceRoot":"","sources":["../../src/Models/Connection.ts"],"names":[],"mappings":""}
+{"version":3,"file":"Connection.js","sourceRoot":"","sources":["../../src/Models/Connection.ts"],"names":[],"mappings":";;;;;AAAA,wDAAgC;AAChC,yBAAuB;AAEvB,MAAM,YAAY,GAAG,iCAAiC,CAAC;AAEvD,MAAM,iBAAiB,GAAG,CACxB,gBAAgB,GAAG,OAAO,CAAC,GAAG,CAAC,SAAS,IAAI,YAAY,EACxD,EAAE,CAAC,kBAAQ,CAAC,OAAO,CAAC,gBAAgB,CAAC,CAAC;AAExC,kBAAe,iBAAiB,CAAC"}

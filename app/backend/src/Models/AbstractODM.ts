@@ -1,4 +1,5 @@
-import { Schema, models, model, Model, UpdateQuery } from "mongoose";
+import { Schema, models, model, Model, UpdateQuery } from 'mongoose';
+import IUserLogin from '../Interfaces/IUserLogin';
 
 export default abstract class AbstractODM<T> {
   protected model: Model<T>;
@@ -12,7 +13,7 @@ export default abstract class AbstractODM<T> {
   }
 
   public async create(obj: T): Promise<T> {
-    return this.model.create({...obj});
+    return this.model.create({ ...obj });
   }
 
   public async getAll(): Promise<T[]> {
@@ -26,8 +27,12 @@ export default abstract class AbstractODM<T> {
   public async updateById(id: string, obj: Partial<T>): Promise<T | null> {
     return this.model.findByIdAndUpdate(
       { _id: id },
-      { ...obj } as UpdateQuery<T>
+      { ...obj } as UpdateQuery<T>,
     );
+  }
+
+  public async getOne(obj: IUserLogin): Promise<T | null> {
+    return this.model.findOne({ username: obj.username });
   }
 
   public async deleteById(id: string): Promise<T | null> {

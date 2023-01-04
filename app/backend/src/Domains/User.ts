@@ -1,5 +1,5 @@
-import IUser from "../Interfaces/IUser";
-import Person from "./Person";
+import IUser from '../Interfaces/IUser';
+import Person from './Person';
 
 export default class User extends Person {
   public username: string;
@@ -7,7 +7,6 @@ export default class User extends Person {
 
   constructor(user: IUser) {
     super(user);
-
     this.username = user.username;
     this.password = user.password;
   }

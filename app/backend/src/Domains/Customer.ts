@@ -1,5 +1,5 @@
-import ICustomer from "../Interfaces/ICustomer";
-import Person from "./Person";
+import ICustomer from '../Interfaces/ICustomer';
+import Person from './Person';
 
 export default class Customer extends Person {
   email: string;
