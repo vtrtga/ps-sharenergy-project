@@ -21,7 +21,9 @@ export default abstract class AbstractODM<T> {
   }
 
   public async getById(id: string): Promise<T | null> {
-    return this.model.findById(id);
+    return this.model.findById({
+      _id: id,
+    });
   }
 
   public async updateById(id: string, obj: Partial<T>): Promise<T | null> {

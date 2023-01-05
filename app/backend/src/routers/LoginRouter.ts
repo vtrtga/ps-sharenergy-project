@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { NextFunction, Request, Response, Router } from 'express';
 import LoginController from '../Controllers/LoginController';
 
 const LoginRouter = Router();

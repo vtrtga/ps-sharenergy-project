@@ -16,7 +16,15 @@ export default class CustomerService {
     return null;
   }
 
-  public async create(obj: ICustomer) {
+  public async getAll() {
+    const customers = await this.customerODM.getAll();
+
+    const customersArr = customers.map((customer: ICustomer) => this.createCustomerDomain(customer));
+
+    return customersArr;
+  }
+
+  public async create(obj: ICustomer): Promise<Customer | null> {
     const customer = await this.customerODM.create(obj);
 
     return this.createCustomerDomain(customer);

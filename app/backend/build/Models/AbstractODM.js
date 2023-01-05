@@ -28,7 +28,9 @@ class AbstractODM {
     }
     getById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.model.findById(id);
+            return this.model.findById({
+                _id: id,
+            });
         });
     }
     updateById(id, obj) {

@@ -15,9 +15,19 @@ export default class LoginController {
   }
 
   async handleLogin() {
-    const { body } = this.req;
-    const user = await this.service.login(body);
+    try {
 
-    return this.res.status(200).json(user);
+      const { body } = this.req;
+      const user = await this.service.login(body);
+
+      if(body.password !== user?.password) {
+        throw new Error('Invalid username or password');
+      } 
+
+      return this.res.status(200).json(user);
+
+    } catch(e) {
+      return this.res.status(401).json({message: 'Invalid username or password'});
+    }
   }
 }

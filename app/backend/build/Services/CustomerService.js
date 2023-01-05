@@ -24,6 +24,13 @@ class CustomerService {
         }
         return null;
     }
+    getAll() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const customers = yield this.customerODM.getAll();
+            const customersArr = customers.map((customer) => this.createCustomerDomain(customer));
+            return customersArr;
+        });
+    }
     create(obj) {
         return __awaiter(this, void 0, void 0, function* () {
             const customer = yield this.customerODM.create(obj);

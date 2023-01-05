@@ -22,9 +22,17 @@ class LoginController {
     }
     handleLogin() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { body } = this.req;
-            const user = yield this.service.login(body);
-            return this.res.status(200).json(user);
+            try {
+                const { body } = this.req;
+                const user = yield this.service.login(body);
+                if (body.password !== (user === null || user === void 0 ? void 0 : user.password)) {
+                    throw new Error('Invalid username or password');
+                }
+                return this.res.status(200).json(user);
+            }
+            catch (e) {
+                return this.res.status(401).json({ message: 'Invalid username or password' });
+            }
         });
     }
 }
