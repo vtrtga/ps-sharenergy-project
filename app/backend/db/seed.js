@@ -11,9 +11,13 @@ db.createCollection(customerCollection);
 db.user.drop();
 db.customer.drop();
 
+db.customer.insertMany([
+
+])
+
 db.user.insertMany([
   {
-    "_id": "1",
+    "_id": "63b6dca59536b3acfca82fa0",
     "name": "Joe Smith",
     "username": "desafiosharenergy",
     "password": "sh@r3n3rgy",
@@ -21,7 +25,7 @@ db.user.insertMany([
     "gender": "female"
   },
   {
-    "_id": "2",
+    "_id": "63b6dcb559c07d581bbe043e",
     "name": "Johann Smith",
     "username": "desafiosharenergy2",
     "password": "sh@r3n3rgy2",

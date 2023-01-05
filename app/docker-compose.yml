@@ -15,7 +15,7 @@ services:
     # Serviço que irá rodar o node
   node:
     # Imagem base do container
-    image: node:16.14
+    image: node
     # Nome do container para facilitar execução
     container_name: ps_app
     # Caminho da Dockerfile
@@ -24,10 +24,8 @@ services:
     tty: true
     # Mesmo que `docker run -i`
     stdin_open: true
-    # Substitui o comando padrão da imagem do node
-    command: bash
     # Restarta a imagem caso algo a faça parar
-    restart: always
+    restart: on-failure:10
     # Diretório padrão de execução
     working_dir: /app-backend
     # Lista de volumes (diretórios) mapeados de fora para dentro do container
@@ -37,7 +35,6 @@ services:
       - ./backend:/app-backend
     # Lista de serviços do qual este serviço depende
     depends_on:
-      # Precisa do mongo funcionando antes de subir o node
       - mongodb
     # Lista de portas mapeadas de dentro para fora do container
     # na notação porta_de_fora:porta_de_dentro
