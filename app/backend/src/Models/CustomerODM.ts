@@ -5,7 +5,6 @@ import AbstractODM from './AbstractODM';
 export default class CustomerODM extends AbstractODM<ICustomer> {
   constructor() {
     const schema = new Schema<ICustomer>({
-      model: { type: String, required: true },
       birthDate: { type: String, required: true },
       name: { type: String, required: true },
       gender: { type: String, required: false },

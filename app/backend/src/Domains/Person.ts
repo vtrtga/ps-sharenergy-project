@@ -8,19 +8,10 @@ export default class Person {
   protected gender?: string;
 
   constructor(person: IPerson) {
-    this.model = person.model;
     this.id = person.id;
     this.birthDate = person.birthDate;
     this.name = person.name;
     this.gender = person.gender;
-  }
-
-  public setModel(model: string): void {
-    this.model = model;
-  }
-
-  public getModel() {
-    return this.model;
   }
 
   public setId(id: string): void {

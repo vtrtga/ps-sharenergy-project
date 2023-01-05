@@ -9,19 +9,28 @@ export default class CustomerController {
   private next: NextFunction;
 
   constructor(req: Request, res: Response, next: NextFunction) {
-    this.service = new CustomerService();
+      this.service = new CustomerService();
+      this.req = req;
+      this.res = res;
+      this.next = next;
   }
 
-  createCustomer(): Response {
-    const { body } = this.req;
-    const newCustomer = this.service.create(body);
-
-    return this.res.status(201).json(newCustomer);
+  public async createCustomer() {
+    try {
+      const { body } = this.req;
+      const newCustomer = await this.service.create(body);
+      return this.res.status(201).json(newCustomer);
+    } catch(e) {
+      this.next(e);
+    }
   }
 
-  getAllCustomers(): Response {
-    const customers = this.service.getAll();
-
-    return this.res.status(200).json(customers);
+  public async getAllCustomers() {
+    try {
+      const customers = await this.service.getAll(); 
+      return this.res.status(200).json(customers);
+    } catch (e) {
+      this.next(e);
+    }
   }
 }

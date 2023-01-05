@@ -5,7 +5,6 @@ import AbstractODM from './AbstractODM';
 export default class UserODM extends AbstractODM<IUser> {
   constructor() {
     const schema = new Schema<IUser>({
-      model: { type: String, required: true },
       birthDate: { type: String, required: true },
       gender: { type: String, required: false },
       name: { type: String, required: true },
