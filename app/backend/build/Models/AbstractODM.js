@@ -38,6 +38,7 @@ class AbstractODM {
     }
     getOne(obj) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(obj);
             return this.model.findOne({ username: obj.username });
         });
     }

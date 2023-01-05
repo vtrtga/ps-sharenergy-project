@@ -22,8 +22,8 @@ class LoginController {
     }
     handleLogin() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { username } = this.req.body;
-            const user = yield this.service.login(username);
+            const { body } = this.req;
+            const user = yield this.service.login(body);
             return this.res.status(200).json(user);
         });
     }

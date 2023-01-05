@@ -15,8 +15,8 @@ class CustomerODM extends AbstractODM_1.default {
             phone: { type: String, required: true },
             email: { type: String, required: true },
             cpf: { type: String, required: true },
-            address: { type: String, required: true }
-        });
+            address: { type: String, required: true },
+        }, { collection: 'customer' });
         super('customer', schema);
     }
 }

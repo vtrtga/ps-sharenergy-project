@@ -14,7 +14,7 @@ class UserODM extends AbstractODM_1.default {
             name: { type: String, required: true },
             username: { type: String, required: true },
             password: { type: String, required: true },
-        });
+        }, { collection: 'user' });
         super('user', schema);
     }
 }
