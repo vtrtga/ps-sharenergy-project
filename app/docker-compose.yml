@@ -50,7 +50,7 @@ services:
     build: ./backend/db
     container_name: ps_db_container
     volumes:
-      - ./app/db:/app/db
+      - ./backend/db:/app/db
     restart: always
     environment:
       - MONGO_INITDB_DATABASE=PSApp
