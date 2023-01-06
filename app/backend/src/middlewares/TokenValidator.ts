@@ -12,7 +12,6 @@ const tokenValidator = (req: Request, res: Response, next: NextFunction) => {
 
   try {
     const verif: string | Jwt.JwtPayload = Jwt.verify(authorization, secret);
-
     req.body = { ...req.body, verif };
   } catch (e) {
     return res.status(401).json({ message: 'Token must be a valid token' });
