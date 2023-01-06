@@ -19,7 +19,8 @@ export default class CustomerService {
   public async getAll() {
     const customers = await this.customerODM.getAll();
 
-    const customersArr = customers.map((customer: ICustomer) => this.createCustomerDomain(customer));
+    const customersArr = customers.map((customer: ICustomer) => 
+      this.createCustomerDomain(customer));
 
     return customersArr;
   }

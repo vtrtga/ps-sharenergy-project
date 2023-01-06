@@ -1,6 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import ICustomer from "../Interfaces/ICustomer";
-import CustomerService from "../Services/CustomerService";
+import { NextFunction, Request, Response } from 'express';
+import CustomerService from '../Services/CustomerService';
 
 export default class CustomerController {
   private service: CustomerService;
@@ -9,10 +8,10 @@ export default class CustomerController {
   private next: NextFunction;
 
   constructor(req: Request, res: Response, next: NextFunction) {
-      this.service = new CustomerService();
-      this.req = req;
-      this.res = res;
-      this.next = next;
+    this.service = new CustomerService();
+    this.req = req;
+    this.res = res;
+    this.next = next;
   }
 
   public async createCustomer() {
@@ -20,7 +19,7 @@ export default class CustomerController {
       const { body } = this.req;
       const newCustomer = await this.service.create(body);
       return this.res.status(201).json(newCustomer);
-    } catch(e) {
+    } catch (e) {
       this.next(e);
     }
   }

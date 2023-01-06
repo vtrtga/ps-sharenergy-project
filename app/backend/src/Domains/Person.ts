@@ -1,7 +1,6 @@
 import IPerson from '../Interfaces/IPerson';
 
 export default class Person {
-  protected model: string;
   protected id?: string | undefined;
   protected birthDate: string;
   protected name: string;

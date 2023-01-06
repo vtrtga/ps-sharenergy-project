@@ -1,5 +1,4 @@
 export default interface ICustomer {
-  model: string;
   id?: string | undefined;
   birthDate: string;
   name: string;

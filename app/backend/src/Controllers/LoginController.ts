@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import tokenGenerator from '../utils/TokenGenerator';
 import LoginService from '../Services/LoginService';
 
 export default class LoginController {
@@ -16,18 +17,18 @@ export default class LoginController {
 
   async handleLogin() {
     try {
-
       const { body } = this.req;
       const user = await this.service.login(body);
 
-      if(body.password !== user?.password) {
+      if (body.password !== user?.password) {
         throw new Error('Invalid username or password');
       } 
 
-      return this.res.status(200).json(user);
+      const token = tokenGenerator(body.username);
 
-    } catch(e) {
-      return this.res.status(401).json({message: 'Invalid username or password'});
+      return this.res.status(200).json({ token });
+    } catch (e) {
+      return this.res.status(401).json({ message: 'Invalid username or password' });
     }
   }
 }

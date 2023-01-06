@@ -12,4 +12,4 @@ RUN chown node:node /app-backend
 
 USER node
 
-CMD [ "npm", "run", "dev" ]
+RUN [ "npm", "run", "dev" ]
