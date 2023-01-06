@@ -2,9 +2,11 @@ FROM node:19.2.0
 
 WORKDIR /app-backend
 
-COPY package*.json .
+COPY package*.json ./
 
-RUN npm install
+RUN chmod -R 777 /app-backend
+
+RUN ["npm", "i"] 
 
 COPY . .
 
@@ -12,4 +14,4 @@ RUN chown node:node /app-backend
 
 USER node
 
-RUN [ "npm", "run", "dev" ]
+CMD ["npm", "run", "dev"]

@@ -1,12 +1,13 @@
-FROM node
+FROM node:19.2.0
 
+USER node
 WORKDIR /app-frontend
 
-COPY package.json .
+COPY --chown=node:node package.json .
 
 RUN npm install
 
 COPY . .
-EXPOSE 3000
+
 
 CMD ["npm", "start"]

@@ -1,21 +1,20 @@
-version: "3"
+version: "3.9"
 
 services:
   # Serviço que irá rodar o frontend
   frontend:
     build: ./frontend
+    container_name: app_frontend
     ports:
       - 3000:3000
     platform: linux/x86_64
     working_dir: /app-frontend
-    volumes:
-      - ./frontend:/app-frontend
     depends_on:
       - node
     # Serviço que irá rodar o node
   node:
     # Imagem base do container
-    image: node
+    image: node:19.2.0
     # Nome do container para facilitar execução
     container_name: ps_app
     # Caminho da Dockerfile
@@ -25,7 +24,8 @@ services:
     # Mesmo que `docker run -i`
     stdin_open: true
     # Restarta a imagem caso algo a faça parar
-    restart: on-failure:10
+    # command: bash
+    restart: always
     # Diretório padrão de execução
     working_dir: /app-backend
     # Lista de volumes (diretórios) mapeados de fora para dentro do container
@@ -50,13 +50,11 @@ services:
     build: ./backend/db
     container_name: ps_db_container
     volumes:
-      - ./backend/db:/app/db
+      - ./backend/db:/app
     restart: always
     environment:
       - MONGO_INITDB_DATABASE=PSApp
     ports:
-      # Garanta que não haverá conflitos de porta com um mongodb que esteja
-      # rodando localmente
       - 27017:27017
 # Lista de redes que os containeres irão utilizar
 networks:
