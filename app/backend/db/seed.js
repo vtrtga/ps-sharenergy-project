@@ -35,6 +35,7 @@ db.createCollection(customerCollection);
 db.customer.insertMany([
   {
     _id: "63b6e03529c3996f0ab2ab60",
+    birthDate: "09/07/1980",
     name: "Mauricio Mattar",
     gender: "male",
     phone: "19-99962-6262",
@@ -44,6 +45,7 @@ db.customer.insertMany([
   },
   {
     _id: "63b6e0d13b77a6fbc6bdeae9",
+    birthDate: "23/11/1962",
     name: "Karina Silveira",
     gender: "female",
     phone: "11-99922-1234",
@@ -53,6 +55,7 @@ db.customer.insertMany([
   },
   {
     _id: "63b6e1c901da8a7bd69001f7",
+    birthDate: "02/06/2001",
     name: "Camila Serrano",
     gender: "female",
     phone: "11-99921-4321",

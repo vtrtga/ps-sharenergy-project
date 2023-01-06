@@ -1,4 +1,4 @@
-FROM node
+FROM node:19.2.0
 
 WORKDIR /app-backend
 
