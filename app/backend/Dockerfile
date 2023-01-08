@@ -1,17 +1,17 @@
 FROM node:19.2.0
 
-WORKDIR /app-backend
+USER node
 
-COPY package*.json ./
+WORKDIR /home/app-backend
 
-RUN chmod -R 777 /app-backend
+COPY --chown=node:node package*.json ./
 
 RUN ["npm", "i"] 
 
-COPY . .
+COPY --chown=node:node . .
 
-RUN chown node:node /app-backend
+EXPOSE 3001
 
-USER node
+# RUN chown node:node /app-backend
 
 CMD ["npm", "run", "dev"]

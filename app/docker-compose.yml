@@ -27,12 +27,12 @@ services:
     # command: bash
     restart: always
     # Diretório padrão de execução
-    working_dir: /app-backend
+    working_dir: /home/app-backend
     # Lista de volumes (diretórios) mapeados de fora para dentro do container
     volumes:
       # Monta o diretório atual, com todos os dados do projeto, 
       # dentro do diretório /app
-      - ./backend:/app-backend
+      - ./backend:/home/app-backend
     # Lista de serviços do qual este serviço depende
     depends_on:
       - mongodb
@@ -50,7 +50,7 @@ services:
     build: ./backend/db
     container_name: ps_db_container
     volumes:
-      - ./backend/db:/app
+      - ./backend/db:/docker-entrypoint-initdb.d
     restart: always
     environment:
       - MONGO_INITDB_DATABASE=PSApp

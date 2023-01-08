@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "@types/body-parser": "^1.19.2",
-    "@types/chai-http": "^4.2.0",
     "@types/cors": "^2.8.13",
     "@types/jsonwebtoken": "^9.0.0",
     "body-parser": "^1.20.1",
