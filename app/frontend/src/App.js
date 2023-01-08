@@ -1,11 +1,13 @@
 import './styles/index.css';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
 
 function App() {
   return (
-    <div className="App">
-      <Login />
-    </div>
+    <Routes>
+      <Route path="/login" element={ <Login /> } />
+      <Route path="/" element={ <Navigate to="/login" /> } />
+    </Routes>
   );
 }
 
