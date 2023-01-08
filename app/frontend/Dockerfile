@@ -7,7 +7,7 @@ COPY --chown=node:node package.json .
 
 RUN npm install
 
-COPY . .
+COPY --chown=node:node . .
 
 
 CMD ["npm", "start"]
