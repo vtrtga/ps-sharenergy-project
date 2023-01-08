@@ -1,17 +1,27 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
+import { postMethod } from '../services/usersAndCustomers';
 import Input from '../components/Input';
 
 function Login() {
+  const navigate = useNavigate();
+  const [invalidCredentials, setInvalidCredentials] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // const requestLogin = () => {
-  //   try {
-  //     postMethod()
-  //   }
-  // }
+  const requestLogin = async () => {
+    try {
+      const { token } = await postMethod('/login', { username, password });
+      localStorage.setItem('token', token);
+      setInvalidCredentials(false);
+      navigate('/home');
+    } catch (e) {
+      setInvalidCredentials(true);
+      console.log(e);
+    }
+  };
   return (
     <section className="h-screen md:justify-center">
       <div className="flex px-6 text-gray-800 xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
@@ -29,7 +39,10 @@ function Login() {
               text="Password"
               type="password"
             />
-            <Button text="Submit" />
+            {
+              invalidCredentials ? (<p>Invalid username or password</p>) : null
+            }
+            <Button text="Submit" onClick={ requestLogin } />
           </div>
         </form>
       </div>

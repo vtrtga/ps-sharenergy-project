@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-require('dotenv');
+// require('dotenv');
 
 const PORT = process.env.API_PORT || '3001';
 const PROTOCOL = process.env.PROTOCOL || 'http';
