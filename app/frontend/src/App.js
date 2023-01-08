@@ -1,9 +1,10 @@
 import './styles/index.css';
+import Login from './pages/Login';
 
 function App() {
   return (
-    <div className="text-3xl font-bold underline">
-      HELLO WORLD
+    <div className="App">
+      <Login />
     </div>
   );
 }
