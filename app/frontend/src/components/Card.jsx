@@ -5,28 +5,31 @@ import PropTypes from 'prop-types';
 function Card({ img, name, email, username, age }) {
   return (
     <div
-      className="inline-block bg-slate-200 mx-7 align-middle text-center border-2 w-72 h-44 border-solid border-black rounded-2xl m-5"
+      className="inline-block mx-7 font-semibold text-black bg-white shadow align-middle text-center w-96 m-5 md:rounded-2xl"
     >
       <img className="mx-auto" src={ img } alt="user" />
-      <p>
-        name:
-        {' '}
-        { name }
-      </p>
-      <p>
-        email:
-        {' '}
-        { email }
-      </p>
-      <p>
-        user :
-        { username }
-      </p>
-      <p>
-        age:
-        {' '}
-        { age }
-      </p>
+      <ul>
+        <li>
+          NAME:
+          {' '}
+          { name }
+        </li>
+        <li>
+          EMAIL:
+          {' '}
+          { email }
+        </li>
+        <li>
+          USER:
+          {' '}
+          { username }
+        </li>
+        <li>
+          AGE:
+          {' '}
+          { age }
+        </li>
+      </ul>
     </div>
   );
 }
