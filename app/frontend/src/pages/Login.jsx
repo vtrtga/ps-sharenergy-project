@@ -15,6 +15,7 @@ function Login() {
     try {
       const { token } = await postMethod('/login', { username, password });
       localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
       setInvalidCredentials(false);
       navigate('/home');
     } catch (e) {

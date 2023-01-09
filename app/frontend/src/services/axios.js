@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const PORT = process.env.API_PORT || '3001';
 const PROTOCOL = process.env.PROTOCOL || 'http';
-const ENDPOINT = process.env.HOST || 'localhost';
+const ENDPOINT = process.env.ENDPOINT || 'localhost';
 
 const api = axios.create({
   baseURL: `${PROTOCOL}://${ENDPOINT}:${PORT}`,
