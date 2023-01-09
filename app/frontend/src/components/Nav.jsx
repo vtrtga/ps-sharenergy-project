@@ -17,6 +17,8 @@ function Nav() {
         {' '}
         { username }
       </span>
+      <Button text="Page2" />
+      <Button text="Page3" />
       <Button text="Logout" onClick={ handleOnLogout } />
     </nav>
   );

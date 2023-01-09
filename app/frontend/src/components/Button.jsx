@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable max-len */
 import React from 'react';
-import PropTypes from 'prop-types';
 
 function Button({ onClick, text }) {
   return (
@@ -15,8 +15,3 @@ function Button({ onClick, text }) {
 }
 
 export default Button;
-
-Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
-};

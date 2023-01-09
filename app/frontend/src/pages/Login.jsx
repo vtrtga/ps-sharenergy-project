@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable react/jsx-max-depth */
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import { postMethod } from '../services/usersAndCustomers';
@@ -10,6 +12,7 @@ function Login() {
   const [invalidCredentials, setInvalidCredentials] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
 
   const requestLogin = async () => {
     try {
@@ -23,6 +26,11 @@ function Login() {
       console.log(e);
     }
   };
+
+  // eslint-disable-next-line no-unused-expressions
+  useEffect(() => {
+    isChecked ? localStorage.setItem('userInfos', JSON.stringify({ username, password })) : localStorage.removeItem('userInfos');
+  }, []);
   return (
     <section className="h-screen md:justify-center">
       <div className="flex px-6 text-gray-800 xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
@@ -40,6 +48,10 @@ function Login() {
               text="Password"
               type="password"
             />
+            <label className="m-1" htmlFor="checkbox">
+              <input type="checkbox" checked={ isChecked } onClick={ () => setIsChecked(!isChecked) } className="m-1" />
+              Remember me
+            </label>
             {
               invalidCredentials ? (<p>Invalid username or password</p>) : null
             }

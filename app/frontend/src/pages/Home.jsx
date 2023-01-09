@@ -1,11 +1,12 @@
 import React from 'react';
 import Nav from '../components/Nav';
+import Users from '../components/Users';
 
 function Home() {
   return (
     <div>
       <Nav />
-      HOME
+      <Users />
     </div>
   );
 }
