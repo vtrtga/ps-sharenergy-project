@@ -14,7 +14,6 @@ function SelectSearchInput({ onChange, styles, value }) {
           <option value="firstName">first name</option>
           <option value="userName">username</option>
           <option value="email">email</option>
-          <option value="age">age</option>
           <option value="lastName">last name</option>
         </select>
       </label>

@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable max-len */
@@ -12,14 +13,14 @@ function Users() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
   const [searchInputValue, setSearchInputValue] = useState('');
-  const [filteredUser, setFilteredUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [selectValue, setSelectValue] = useState('firstName');
 
   const itemsPerPage = 9;
   const totalPages = Math.ceil(users.length / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentItens = filteredUser.slice(startIndex, endIndex);
+  const currentItens = filteredUsers.slice(startIndex, endIndex);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -29,7 +30,7 @@ function Users() {
             firstName: name.first,
             lastName: name.last,
             age: dob.age,
-            username: login.username,
+            userName: login.username,
             email,
             image: picture.thumbnail,
           }))));
@@ -37,14 +38,39 @@ function Users() {
       setFilteredUsers(users);
     };
     fetchItems();
-  }, [setUsers, searchInputValue, setSearchInputValue, isLoading]);
+  }, [setUsers, isLoading]);
+
+  useEffect(() => {
+    setFilteredUsers([...users]);
+    const minLength = 1;
+    if (searchInputValue.length > minLength) {
+      const filtered = users.filter(({ userName, lastName, email, firstName }) => {
+        if (selectValue === 'userName') {
+          return userName.toLowerCase().match(searchInputValue.toLowerCase());
+        }
+        if (selectValue === 'email') {
+          return email.toLowerCase().match(searchInputValue.toLowerCase());
+        }
+        if (selectValue === 'lastName') {
+          return lastName.toLowerCase().match(searchInputValue.toLowerCase());
+        }
+        if (selectValue === 'firstName') {
+          return firstName.toLowerCase().match(searchInputValue.toLowerCase());
+        }
+        return [...users];
+      });
+      console.log(filtered);
+      if (filtered) {
+        setFilteredUsers([...filtered]);
+      }
+    }
+  }, [searchInputValue, users, selectValue, setFilteredUsers]);
 
   const onChangeInput = ({ target }) => {
     const { value } = target;
     setSearchInputValue(value);
-    const filtered = users.filter(({ firstName }) => firstName.toLowerCase().match(searchInputValue.toLowerCase()));
-    setFilteredUsers(filtered);
   };
+
   return (
     <div className="md: w-full m-auto border-l-blue-800 border-solid border-2">
       <SelectSeachInput
@@ -73,9 +99,9 @@ function Users() {
           : (
             <ul className="flex-wrap mt-48 mr-8 ml-8 m-auto">
               {
-                currentItens.map(({ age, firstName, lastName, username, email, image }, i) => (<Card
+                currentItens.map(({ age, firstName, lastName, userName, email, image }, i) => (<Card
                   key={ i }
-                  username={ username }
+                  username={ userName }
                   name={ `${firstName} ${lastName}` }
                   age={ age }
                   email={ email }
