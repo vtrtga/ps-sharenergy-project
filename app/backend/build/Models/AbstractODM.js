@@ -45,7 +45,7 @@ class AbstractODM {
     }
     deleteById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.model.remove({ _id: id });
+            return this.model.deleteOne({ _id: id });
         });
     }
 }

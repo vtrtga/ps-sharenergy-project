@@ -33,11 +33,11 @@ export default abstract class AbstractODM<T> {
     );
   }
 
-  public async getOne(obj: IUserLogin): Promise<T | null> {
+  public async getOne(obj: any): Promise<T | null> {
     return this.model.findOne({ username: obj.username });
   }
 
-  public async deleteById(id: string): Promise<T | null> {
-    return this.model.remove({ _id: id });
+  public async deleteById(id: string) {
+    return this.model.deleteOne({ _id: id });
   }
 }

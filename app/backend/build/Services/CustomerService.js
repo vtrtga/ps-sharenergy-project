@@ -31,6 +31,13 @@ class CustomerService {
             return customersArr;
         });
     }
+    remove(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const deleteC = yield this.customerODM.deleteById(id);
+            console.log(deleteC);
+            return deleteC;
+        });
+    }
     create(obj) {
         return __awaiter(this, void 0, void 0, function* () {
             const customer = yield this.customerODM.create(obj);

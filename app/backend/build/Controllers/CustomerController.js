@@ -20,6 +20,18 @@ class CustomerController {
         this.res = res;
         this.next = next;
     }
+    removeCustomer() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { id } = this.req.params;
+                yield this.service.remove(id);
+                return this.res.status(202).json({ message: 'User has been removed.' });
+            }
+            catch (e) {
+                return this.res.status(400).json({ message: e });
+            }
+        });
+    }
     createCustomer() {
         return __awaiter(this, void 0, void 0, function* () {
             try {

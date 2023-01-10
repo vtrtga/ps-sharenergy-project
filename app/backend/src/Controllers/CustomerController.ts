@@ -14,6 +14,17 @@ export default class CustomerController {
     this.next = next;
   }
 
+  public async removeCustomer() {
+    try {
+      const { id } = this.req.params;
+       await this.service.remove(id);
+       
+      return this.res.status(202).json({message: 'User has been removed.'});
+    } catch(e) {
+      return this.res.status(400).json({ message: e });
+    }
+  }
+
   public async createCustomer() {
     try {
       const { body } = this.req;

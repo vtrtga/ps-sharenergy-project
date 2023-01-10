@@ -11,5 +11,6 @@ const InputValidation_1 = __importDefault(require("../middlewares/InputValidatio
 const CustomerRouter = (0, express_1.Router)();
 CustomerRouter.post('/', InputValidation_1.default, TokenValidator_1.default, (req, res, next) => new CustomerController_1.default(req, res, next).createCustomer());
 CustomerRouter.get('/', TokenValidator_1.default, (req, res, next) => new CustomerController_1.default(req, res, next).getAllCustomers());
+CustomerRouter.delete('/:id', TokenValidator_1.default, (req, res, next) => new CustomerController_1.default(req, res, next).removeCustomer());
 exports.default = CustomerRouter;
 //# sourceMappingURL=CustomerRouter.js.map

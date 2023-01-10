@@ -25,6 +25,13 @@ export default class CustomerService {
     return customersArr;
   }
 
+  public async remove(id: string) {
+    const deleteC = await this.customerODM.deleteById(id);
+    console.log(deleteC);
+
+    return deleteC;
+  }
+
   public async create(obj: ICustomer) {
     const customer = await this.customerODM.create(obj);
     return this.createCustomerDomain(customer);
