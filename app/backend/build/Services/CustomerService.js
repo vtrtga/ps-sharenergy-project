@@ -44,6 +44,12 @@ class CustomerService {
             return this.createCustomerDomain(customer);
         });
     }
+    update(id, obj) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const updatedCustomer = yield this.customerODM.updateById(id, obj);
+            return this.createCustomerDomain(updatedCustomer);
+        });
+    }
 }
 exports.default = CustomerService;
 //# sourceMappingURL=CustomerService.js.map

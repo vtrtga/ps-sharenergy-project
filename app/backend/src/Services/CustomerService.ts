@@ -1,3 +1,4 @@
+import { UpdateQuery } from 'mongoose';
 import Customer from '../Domains/Customer';
 import ICustomer from '../Interfaces/ICustomer';
 import CustomerODM from '../Models/CustomerODM';
@@ -35,5 +36,10 @@ export default class CustomerService {
   public async create(obj: ICustomer) {
     const customer = await this.customerODM.create(obj);
     return this.createCustomerDomain(customer);
+  }
+
+  public async update(id: string, obj: Partial<any>) {
+    const updatedCustomer = await this.customerODM.updateById(id, obj);
+    return this.createCustomerDomain(updatedCustomer);
   }
 }

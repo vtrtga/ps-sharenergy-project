@@ -9,4 +9,5 @@ const CustomerRouter = Router();
 CustomerRouter.post('/', newCustomerValidation, tokenValidator, (req, res, next) => new CustomerController(req, res, next).createCustomer());
 CustomerRouter.get('/', tokenValidator, (req, res, next) => new CustomerController(req, res, next).getAllCustomers());
 CustomerRouter.delete('/:id', tokenValidator, (req, res, next) => new CustomerController(req, res, next).removeCustomer());
+CustomerRouter.put('/:id', tokenValidator, (req, res, next) => new CustomerController(req, res, next).updateCustomer());
 export default CustomerRouter;

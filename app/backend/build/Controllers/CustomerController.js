@@ -32,6 +32,18 @@ class CustomerController {
             }
         });
     }
+    updateCustomer() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { params, body } = this.req;
+                const updatedCustomer = yield this.service.update(params.id, body);
+                return this.res.status(204).json({ message: `User with id ${params.id} updated successfully:` });
+            }
+            catch (e) {
+                return this.res.status(400).json({ message: e });
+            }
+        });
+    }
     createCustomer() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
