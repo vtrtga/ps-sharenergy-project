@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const TokenGenerator_1 = __importDefault(require("../utils/TokenGenerator"));
 const LoginService_1 = __importDefault(require("../Services/LoginService"));
 class LoginController {
     constructor(req, res, next) {
@@ -28,7 +29,8 @@ class LoginController {
                 if (body.password !== (user === null || user === void 0 ? void 0 : user.password)) {
                     throw new Error('Invalid username or password');
                 }
-                return this.res.status(200).json(user);
+                const token = (0, TokenGenerator_1.default)(body.username);
+                return this.res.status(200).json({ token });
             }
             catch (e) {
                 return this.res.status(401).json({ message: 'Invalid username or password' });

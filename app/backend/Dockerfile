@@ -12,6 +12,4 @@ COPY --chown=node:node . .
 
 EXPOSE 3001
 
-# RUN chown node:node /app-backend
-
 CMD ["npm", "run", "dev"]

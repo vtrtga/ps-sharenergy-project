@@ -8,7 +8,6 @@ const AbstractODM_1 = __importDefault(require("./AbstractODM"));
 class CustomerODM extends AbstractODM_1.default {
     constructor() {
         const schema = new mongoose_1.Schema({
-            model: { type: String, required: true },
             birthDate: { type: String, required: true },
             name: { type: String, required: true },
             gender: { type: String, required: false },
