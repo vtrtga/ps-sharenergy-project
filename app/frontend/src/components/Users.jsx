@@ -5,6 +5,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import Input from './Input';
+import SelectSeachInput from './SelectSearchInput';
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -12,6 +13,7 @@ function Users() {
   const [currentPage, setCurrentPage] = useState(0);
   const [searchInputValue, setSearchInputValue] = useState('');
   const [filteredUser, setFilteredUsers] = useState([]);
+  const [selectValue, setSelectValue] = useState('firstName');
 
   const itemsPerPage = 9;
   const totalPages = Math.ceil(users.length / itemsPerPage);
@@ -22,27 +24,41 @@ function Users() {
   useEffect(() => {
     const fetchItems = async () => {
       await fetch('https://randomuser.me/api/?results=90')
-        .then((res) => res.json()).then((res) => setUsers(res.results));
-      setFilteredUsers(users);
+        .then((res) => res.json()).then((res) => setUsers(res.results
+          .map(({ name, dob, login, email, picture }) => ({
+            firstName: name.first,
+            lastName: name.last,
+            age: dob.age,
+            username: login.username,
+            email,
+            image: picture.thumbnail,
+          }))));
       setIsLoading(false);
+      setFilteredUsers(users);
     };
     fetchItems();
-  }, [setUsers, setFilteredUsers, setSearchInputValue]);
+  }, [setUsers, searchInputValue, setSearchInputValue, isLoading]);
 
   const onChangeInput = ({ target }) => {
     const { value } = target;
     setSearchInputValue(value);
-    const filtered = users.filter(({ name: { first } }) => first.toLowerCase().match(searchInputValue.toLowerCase()));
+    const filtered = users.filter(({ firstName }) => firstName.toLowerCase().match(searchInputValue.toLowerCase()));
     setFilteredUsers(filtered);
   };
   return (
-    <div className="md: w-full m-auto border-l-blue-800 border-solid border-8">
-      <Input value={ searchInputValue } onChange={ (e) => onChangeInput(e) } placeHolder="Search by name" />
+    <div className="md: w-full m-auto border-l-blue-800 border-solid border-2">
+      <SelectSeachInput
+        inputText="Select filter option"
+        value={ selectValue }
+        onChange={ ({ target }) => setSelectValue(target.value) }
+      />
+      <Input value={ searchInputValue } onChange={ (e) => onChangeInput(e) } placeHolder="Search" />
       <div className="">
         {
           Array.from(
             Array(totalPages),
             (item, index) => (<button
+              key={ index }
               onClick={ () => setCurrentPage(index) }
               className="bg-gray-500 m-2 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:bg-blue-500 md: w-auto"
               type="button"
@@ -57,13 +73,13 @@ function Users() {
           : (
             <ul className="flex-wrap mt-48 mr-8 ml-8 m-auto">
               {
-                currentItens.map(({ name, dob, login, email, picture }) => (<Card
-                  key={ login.username }
-                  username={ login.username }
-                  name={ `${name.first} ${name.last}` }
-                  age={ dob.age }
+                currentItens.map(({ age, firstName, lastName, username, email, image }, i) => (<Card
+                  key={ i }
+                  username={ username }
+                  name={ `${firstName} ${lastName}` }
+                  age={ age }
                   email={ email }
-                  img={ picture.thumbnail }
+                  img={ image }
                 />))
               }
             </ul>
