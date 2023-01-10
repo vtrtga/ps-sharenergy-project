@@ -24,7 +24,7 @@ function Nav() {
             <button onClick={ () => navigate('/home') } type="button">Home</button>
           </li>
           <li className="hover:bg-gray-200 py-4 px-6 cursor-pointer">
-            <button type="button">Page</button>
+            <button onClick={ () => navigate('/customers') } type="button">Customers</button>
           </li>
           <li className="hover:bg-gray-200 py-4 px-6 cursor-pointer">
             <button type="button">Page</button>

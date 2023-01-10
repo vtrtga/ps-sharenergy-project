@@ -3,7 +3,7 @@
 import React from 'react';
 import '../styles/index.css';
 
-function Input({ onChange, text, placeHolder, type, value }) {
+function Input({ onChange, text, placeHolder, type, value, name }) {
   return (
     <div className="">
       <label
@@ -14,6 +14,7 @@ function Input({ onChange, text, placeHolder, type, value }) {
           text
         }
         <input
+          name={ name }
           type={ type }
           value={ value }
           className="form-control block border-solid border-2 rounded-md m-3 p-2 outline-black"
