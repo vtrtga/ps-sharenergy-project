@@ -7,8 +7,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const TokenValidator_1 = __importDefault(require("../middlewares/TokenValidator"));
 const CustomerController_1 = __importDefault(require("../Controllers/CustomerController"));
+const InputValidation_1 = __importDefault(require("../middlewares/InputValidation"));
 const CustomerRouter = (0, express_1.Router)();
-CustomerRouter.post('/', TokenValidator_1.default, (req, res, next) => new CustomerController_1.default(req, res, next).createCustomer());
+CustomerRouter.post('/', InputValidation_1.default, TokenValidator_1.default, (req, res, next) => new CustomerController_1.default(req, res, next).createCustomer());
 CustomerRouter.get('/', TokenValidator_1.default, (req, res, next) => new CustomerController_1.default(req, res, next).getAllCustomers());
 exports.default = CustomerRouter;
 //# sourceMappingURL=CustomerRouter.js.map
