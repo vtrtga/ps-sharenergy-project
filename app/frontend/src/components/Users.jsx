@@ -4,28 +4,40 @@
 // import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
+import Input from './Input';
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
+  const [searchInputValue, setSearchInputValue] = useState('');
+  const [filteredUser, setFilteredUsers] = useState([]);
 
   const itemsPerPage = 9;
   const totalPages = Math.ceil(users.length / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentItens = users.slice(startIndex, endIndex);
+  const currentItens = filteredUser.slice(startIndex, endIndex);
 
   useEffect(() => {
     const fetchItems = async () => {
       await fetch('https://randomuser.me/api/?results=90')
         .then((res) => res.json()).then((res) => setUsers(res.results));
+      setFilteredUsers(users);
       setIsLoading(false);
     };
     fetchItems();
-  }, []);
+  }, [setUsers, setFilteredUsers, setSearchInputValue]);
+
+  const onChangeInput = ({ target }) => {
+    const { value } = target;
+    setSearchInputValue(value);
+    const filtered = users.filter(({ name: { first } }) => first.toLowerCase().match(searchInputValue.toLowerCase()));
+    setFilteredUsers(filtered);
+  };
   return (
-    <>
+    <div className="md: w-full m-auto border-l-blue-800 border-solid border-8">
+      <Input value={ searchInputValue } onChange={ (e) => onChangeInput(e) } placeHolder="Search by name" />
       <div className="">
         {
           Array.from(
@@ -43,7 +55,7 @@ function Users() {
       {
         isLoading ? (<p>Loading...</p>)
           : (
-            <ul className="flex-wrap mt-48 mr-8 ml-8">
+            <ul className="flex-wrap mt-48 mr-8 ml-8 m-auto">
               {
                 currentItens.map(({ name, dob, login, email, picture }) => (<Card
                   key={ login.username }
@@ -57,7 +69,7 @@ function Users() {
             </ul>
           )
       }
-    </>
+    </div>
   );
 }
 

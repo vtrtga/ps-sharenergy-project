@@ -10,6 +10,7 @@ function Nav() {
     localStorage.clear();
     navigate('/');
   };
+
   return (
     <nav className="flex flex-wrap items-center justify-between bg-stone-800 text-white md: w-full shadow">
       <span className="md: hidden">
@@ -20,7 +21,7 @@ function Nav() {
       <div className="container m-auto flex justify-between items-center text-grey-700">
         <ul className="md: flex items-center pr-10 text-base font-semibold">
           <li className="hover:bg-gray-200 py-4 px-6 cursor-pointer">
-            <button type="button">Home</button>
+            <button onClick={ () => navigate('/home') } type="button">Home</button>
           </li>
           <li className="hover:bg-gray-200 py-4 px-6 cursor-pointer">
             <button type="button">Page</button>
