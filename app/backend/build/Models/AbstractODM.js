@@ -35,7 +35,10 @@ class AbstractODM {
     }
     updateById(id, obj) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.model.findByIdAndUpdate({ _id: id }, Object.assign({}, obj));
+            const validId = (0, mongoose_1.isValidObjectId)(id);
+            if (!validId)
+                throw new Error('Invalid ID');
+            return yield this.model.findByIdAndUpdate({ _id: id }, Object.assign({}, obj));
         });
     }
     getOne(obj) {

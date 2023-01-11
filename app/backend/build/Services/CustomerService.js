@@ -34,7 +34,6 @@ class CustomerService {
     remove(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const deleteC = yield this.customerODM.deleteById(id);
-            console.log(deleteC);
             return deleteC;
         });
     }
@@ -44,10 +43,12 @@ class CustomerService {
             return this.createCustomerDomain(customer);
         });
     }
-    update(id, obj) {
+    update(id, data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const updatedCustomer = yield this.customerODM.updateById(id, obj);
-            return this.createCustomerDomain(updatedCustomer);
+            const updatedCustomer = yield this.customerODM.updateById(id, data);
+            if (updatedCustomer)
+                return this.createCustomerDomain(updatedCustomer);
+            return null;
         });
     }
 }

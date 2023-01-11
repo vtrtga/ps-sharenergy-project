@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'delete': "url('/src/images/delete.png')",
+      }
+    },
   },
   variants: {
     extend: {

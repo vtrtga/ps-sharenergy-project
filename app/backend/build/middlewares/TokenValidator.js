@@ -32,7 +32,6 @@ const tokenValidator = (req, res, next) => {
         return res.status(401).json({ message: 'Token not found' });
     try {
         const verif = Jwt.verify(authorization, secret);
-        req.body = Object.assign(Object.assign({}, req.body), { verif });
     }
     catch (e) {
         return res.status(401).json({ message: 'Token must be a valid token' });

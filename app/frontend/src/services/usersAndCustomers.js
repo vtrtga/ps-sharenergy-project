@@ -6,9 +6,15 @@ const postMethod = async (endpoint, body) => {
 };
 
 const getMethod = async (endpoint, body = null) => {
-  const { data } = await api.post(endpoint, body);
+  const { data } = await api.get(endpoint, body);
 
   return data;
 };
 
-export { postMethod, getMethod };
+const deleteMethod = async (endpoint) => {
+  const { data } = await api.delete(endpoint); // recebe id no params
+
+  return data;
+};
+
+export { postMethod, getMethod, deleteMethod };
