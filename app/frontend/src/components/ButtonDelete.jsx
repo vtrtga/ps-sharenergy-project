@@ -8,7 +8,8 @@ function ButtonDelete({ deleteId }) {
   const handleOnDelete = async () => {
     try {
       await deleteMethod(`/customer/${customerId}`);
-      window.location.reload(true);
+      const time = 1500;
+      setTimeout(() => window.location.reload(true), time);
     } catch (e) {
       console.error(e);
     }
@@ -22,6 +23,7 @@ function ButtonDelete({ deleteId }) {
         type="button"
         className="
         bg-delete
+        bg-red-400
         bg-cover
         w-10 h-10"
       />

@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import Button from '../components/Button';
-import ButtonDelete from '../components/ButtonDelete';
 import GenericSelectInput from '../components/GenericSelectInput';
 import Input from '../components/Input';
 import Nav from '../components/Nav';
+import Table from '../components/Table';
 import { getMethod, postMethod } from '../services/usersAndCustomers';
 
 function Customers() {
@@ -41,10 +41,12 @@ function Customers() {
   const requestRegister = async () => {
     try {
       const minLength = 3;
+      const reloadTime = 600;
       if (Object.values(newCustomer).length < minLength) {
         throw new Error('Empty required input');
       }
       await postMethod('/customer', newCustomer);
+      setTimeout(() => window.location.reload(true), reloadTime);
     } catch (e) {
       setError('All fields must be filled');
       console.log(e);
@@ -52,7 +54,7 @@ function Customers() {
   };
 
   const opt = ['male', 'female', 'non binary'];
-  const tableHead = ['Name', 'Birth date', 'Email', 'Phone', 'Address', 'Gender', 'CPF'];
+  const tableHead = ['Name', 'Birth date', 'Email', 'Phone', 'Address', 'CPF'];
   return (
     <div>
       <Nav />
@@ -78,35 +80,7 @@ function Customers() {
       {
         isLoading ? (<p>Loading...</p>)
           : (
-            <table>
-              <thead>
-                <tr>
-                  {
-                    tableHead.map((text, i) => (
-                      <th key={ i }>{ text }</th>
-                    ))
-                  }
-                </tr>
-              </thead>
-              <tbody>
-
-                {
-                  customers.map((c, i) => (
-                    <tr key={ i }>
-                      <td>{ c.name }</td>
-                      <td>{ c.birthDate }</td>
-                      <td>{ c.email }</td>
-                      <td>{ c.phone }</td>
-                      <td>{ c.address }</td>
-                      <td>{ c.gender }</td>
-                      <td>{ c.cpf }</td>
-                      <td>{ c.age }</td>
-                      <td><ButtonDelete deleteId={ c.id } /></td>
-                    </tr>
-                  ))
-                }
-              </tbody>
-            </table>
+            <Table tableHead={ tableHead } data={ customers } />
           )
       }
     </div>

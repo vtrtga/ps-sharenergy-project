@@ -7,6 +7,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'delete': "url('/src/images/delete.png')",
+        'edit': "url('/src/images/edit.png')",
+        'save': "url('/src/images/save.png')"
       }
     },
   },
