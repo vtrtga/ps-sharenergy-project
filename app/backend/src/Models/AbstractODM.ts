@@ -1,5 +1,4 @@
-import { Schema, models, model, Model, UpdateQuery } from 'mongoose';
-import IUserLogin from '../Interfaces/IUserLogin';
+import { Schema, models, model, Model, isValidObjectId } from 'mongoose';
 
 export default abstract class AbstractODM<T> {
   protected model: Model<T>;
@@ -27,10 +26,10 @@ export default abstract class AbstractODM<T> {
   }
 
   public async updateById(id: string, obj: Partial<T>): Promise<T | null> {
-    return this.model.findByIdAndUpdate(
-      { _id: id },
-      { ...obj } as UpdateQuery<T>,
-    );
+    const validId = isValidObjectId(id);
+    if(!validId) throw new Error('Invalid ID');
+
+    return await this.model.findByIdAndUpdate({ _id: id }, { ...obj });
   }
 
   public async getOne(obj: any): Promise<T | null> {

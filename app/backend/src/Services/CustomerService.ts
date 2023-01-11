@@ -28,7 +28,6 @@ export default class CustomerService {
 
   public async remove(id: string) {
     const deleteC = await this.customerODM.deleteById(id);
-    console.log(deleteC);
 
     return deleteC;
   }
@@ -38,8 +37,11 @@ export default class CustomerService {
     return this.createCustomerDomain(customer);
   }
 
-  public async update(id: string, obj: Partial<any>) {
-    const updatedCustomer = await this.customerODM.updateById(id, obj);
-    return this.createCustomerDomain(updatedCustomer);
+  public async update(id: string, data: ICustomer): Promise<Customer | null> {
+  
+    const updatedCustomer = await this.customerODM.updateById(id, data);
+    if (updatedCustomer) return this.createCustomerDomain(updatedCustomer);
+ 
+    return null;
   }
 }

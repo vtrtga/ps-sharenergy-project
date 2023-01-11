@@ -28,7 +28,7 @@ export default class CustomerController {
   public async updateCustomer() {
     try {
       const { params, body } = this.req;
-      const updatedCustomer = await this.service.update(params.id, body);
+      await this.service.update(params.id, body);
 
       return this.res.status(204).json({ message: `User with id ${params.id} updated successfully:` });
     }catch(e) {
