@@ -17,4 +17,10 @@ const deleteMethod = async (endpoint) => {
   return data;
 };
 
-export { postMethod, getMethod, deleteMethod };
+const putMethod = async (endpoint, body) => {
+  const { data } = await api.put(endpoint, body); // recebe id no params
+
+  return data;
+};
+
+export { postMethod, getMethod, deleteMethod, putMethod };
