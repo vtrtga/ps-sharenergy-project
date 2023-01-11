@@ -80,7 +80,7 @@ function Customers() {
       {
         isLoading ? (<p>Loading...</p>)
           : (
-            <Table tableHead={ tableHead } data={ customers } />
+            <Table isLoading={ isLoading } tableHead={ tableHead } data={ customers } />
           )
       }
     </div>

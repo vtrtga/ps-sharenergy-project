@@ -1,10 +1,16 @@
+/* eslint-disable react/jsx-indent */
+/* eslint-disable indent */
+/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import ButtonDelete from './ButtonDelete';
 import ButtonEdit from './ButtonEdit';
 
-function Row({ data }) {
+function Row({ data, isLoading }) {
+  console.log(data);
   const [onEdit, setOnEdit] = useState(false);
+  const [name, setName] = useState(data.name);
+  // const [birthDate, setBirthDate] = useState(data.birthDate);
   const handleOnEdit = () => {
     setOnEdit(true);
   };
@@ -14,13 +20,25 @@ function Row({ data }) {
   };
   return (
     <tr className="md: border-solid border-black border-2" key={ data.i }>
-      <td className="md: w-44 border-solid border-black border-2">{ data.name }</td>
-      <td className="md: w-44 border-solid border-black border-2">{ data.birthDate }</td>
-      <td className="md: w-44 border-solid border-black border-2">{ data.email }</td>
-      <td className="md: w-44 border-solid border-black border-2">{ data.phone }</td>
-      <td className="md: w-44 border-solid border-black border-2">{ data.address }</td>
-      <td className="md: w-44 border-solid border-black border-2">{ data.cpf }</td>
-      <td className="md: w-44 border-solid border-black border-2">{ data.age }</td>
+
+      {
+        isLoading ? <p>Loading...</p>
+        : Array(data).map((d, i) => (
+          onEdit ? (
+          <input onChange={ ({ target: value }) => setName(value) } value={ name } />
+          )
+           : (
+            <>
+            <td key={ i }>{ data.name }</td>
+            <td key={ i }>{ data.birthDate }</td>
+            <td key={ i }>{ data.email }</td>
+            <td key={ i }>{ data.phone }</td>
+            <td key={ i }>{ data.address }</td>
+            <td key={ i }>{ data.cpf }</td>
+            </>
+          )
+        ))
+      }
       <td>
         <ButtonEdit
           onEdit={ onEdit }
