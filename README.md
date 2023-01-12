@@ -1,92 +1,146 @@
-# Desafio para o processo seletivo SHARENERGY 2023/01
+<h1>Desafio para o processo seletivo SHARENERGY 2023/01</h1>
 
-Repositório destinado aos interessados em participar do processo seletivo da SHARENERGY 2023/01. As vagas são voltadas para desenvolvimento de aplicações Web e Mobile.
+<h3>Estrutura de pastas</h3>
 
-## Sobre a SHARENERGY
+```bash
+└── app/
+    ├── backend/
+    │   ├── node_modules
+    │   ├── build(código compilado javascript)
+    │   └── src/
+    │       ├── controllers
+    │       ├── models
+    │       ├── services
+    │       ├── domains
+    │       ├── interfaces
+    │       ├── middlewares
+    │       ├── routers
+    │       ├── tests
+    │       └── utils/
+    │           └── JoiSchemas
+    └── frontend/
+        ├── node_modules
+        ├── public
+        └── src/
+            ├── images
+            ├── components
+            ├── pages
+            ├── services
+            └── styles
+            
+```
 
-No ramo da produção de energia fotovoltaica, há a modalidade de produção compartilhada. Nessa modalidade, diferentes pessoas investem na construção de uma mesma usina fotovoltaica e dividem o retorno finaceiro referente à energia gerada pela usina.
+<h2>Instruções para execução</h2>
 
-Acreditamos que as energias renováveis terão um lugar dominante em nossa economia pelo resto de nossas vidas. Trabalhamos no sentido de ampliar o impacto positivo que as energias renováveis podem ter no meio ambiente e nas nossas vidas. O sucesso da SHARENERGY é resultado de nossa equipe apaixonada, juntamente com nosso compromisso de oferecer a melhor solução.
 
-Sabemos que negócios enfrentam desafios únicos e por isso oferecemos soluções turnkey, customizadas, economicamente viáveis e seguras.
+<h3>
+  <img src="https://user-images.githubusercontent.com/84795317/212142586-6f5afb82-c5dc-4dad-bd1b-f36d1bfa174d.png" width="26" height="26"/>
+Docker
+</h3>
+<h4>O projeto está implementado utilizando Docker-compose.</h4>
+Os containers estão configurados para executar automaticamente o banco de dados Mongodb,
+o frontend React e o backend com NodeJS nas portas 27017, 3000 e 3001 respectivamente.
 
-A Startup figura entre as top 10 EnergyTechs do ranking 100 Open Startups desde 2018. Prova de que a inovação está enraizada em nossa cultura. Somos uma startup em estágio de crescimento e você trabalhará diretamente com os fundadores, ajudando a definir a visão, o produto e a experiência do usuário.
+Para subir os containers utilizar os seguintes comandos:
+<h5>Primeiramente:</h5> 
+Utilize o comando docker-compose para fazer build do container
 
-<p align="left">
-  <a href="https://www.linkedin.com/company/sharenergy-brasil/">
-    <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn Button">
-  </a>
-  <a href="https://sharenergy.com.br/">
-    <img src="https://img.shields.io/badge/-Website-red" alt="Sharenergy Website Button">
-  </a>
-</p>
+```bash
+docker-compose build --no-cache
+```
 
-## Sobre a vaga
+Após buildar os containers utilizar o seguinte comando para subir
 
-Já pensou em potencializar o setor que mais cresce na galáxia e trabalhar com uma solução que utiliza tecnologia web de ponta, altamente distribuída com foco em performance e disponibilidade? 👀
+```bash
+docker-compose up -d
+```
 
-Os desenvolvedores da Sharenergy são responsáveis por criar e manter aplicações para clientes internos e externos, prover soluções escaláveis, resilientes e altamente disponíveis que sustentem picos de acesso além de atuar como referência técnica e tutores de outros desenvolvedores.
+<h4>Para abrir a página é só acessar a URL:</h4>
 
-Procuramos por pessoas dinâmicas e que queiram estar aprendendo sempre. Nossa equipe é jovem, motivada e estamos sempre em busca de soluções criativas para alcançar os resultados que nossos clientes esperam. Se você tem esse perfil, é autoconfiante, autodidata e tem facilidade para lidar com desafios diários, essa vaga é para você!
+[Link](http://localhost:3000/)
 
-# O Desafio
+É possível fazer o login utilizando as seguintes credenciais: </br>
+usuário: desafiosharenergy </br>
+senha: sh@r3n3rgy
 
-Construir uma aplicação web (frontend e backend) capaz de realizar a comunicação com APIs distintas, além de um CRUD.
+<h3>
+    <img src="https://user-images.githubusercontent.com/25181517/182884177-d48a8579-2cd0-447a-b9a6-ffc7cb02560e.png"
+         width="26" height="26"/>
+    MongoDB
+</h3>
+<h4>As collections estão separadas em: </h4>
+<h6>- User: para os usuários</h6>
+<h6>- Customers: para os clientes</h6>
 
-## Aplicação
+<h3>
+ <img src="https://user-images.githubusercontent.com/25181517/192107858-fe19f043-c502-4009-8c47-476fc89718ad.png"
+      width="26" height="26"/> 
+API Endpoints:
+</h3>
+<h6>POST</h6>
+/login - Login do usuário </br>
+/customer - Cadastro de clientes
+<h6>PUT</h6>
+/customer/:id - Atualização de cliente
+<h6>DELETE</h6>
+/customer/:id - Remoção de cliente
 
-- A página inicial da aplicação deve ser uma `Login Page`;
-- O usuário deve ser capaz de se autenticar utilizando o username `desafiosharenergy` e password `sh@r3n3rgy`, também, deve existir a possibilidade do usuário utilizar o `remember me` para realizar logins automáticos, sem a necessidade de digitar username e password após o primeiro acesso;
-- Após o Login, a página principal deve conter uma listagem de usuários gerada a partir da api [Random User Generator](https://randomuser.me/), a lista deve conter a foto do usuário, nome completo, email, username e idade. Além disso, os requests devem ser páginados, porém, é de critério do participante do desafio a quantidade de resultados a serem exibidos por página e variações para o mesmo. Também, deve haver uma search para buscar usuários por nome, email ou username;
-- Em uma segunda página, o usuário deve ser capaz de selecionar um status code http qualquer, e, após a seleção, deve ser retornada uma imagem da api [HTTP Cat](https://http.cat/) relacionada ao status escolhido, caso não exista tal imagem, deve ser retornada uma imagem de not found à critério de escolha do participante do desafio;
-- Em uma terceira página, deve haver um botão de refresh que, ao ser clicado, deve retornar uma imagem aleatória da api [Random Dog](https://random.dog/);
-- Em uma quarta página, deve haver uma lista de clientes, através da qual o usuário deve ser capaz de cadastrar novos clientes, visualizar informações de um cliente específico, atualizar um cliente e deletar clientes. O cadastro deve possuir nome, email, telefone, endereço e cpf.
+<h3>Rotas do frontend</h3>
+<h4>/login</h4> rota da página login </br>
+<h4>customer</h4> rota da página do CRUD de clientes </br>
+<h4>/home</h4> página principal com os cards de usuário, input de busca e input select filtrando pelo atributo selecionado. </br>
+<h4>/http-cat</h4> página que utiliza as imagens de gatinhos buscando pelo status code referente ao digitado no input, caso não encontre, retorna
+imagem referente ao código 404. </br>
+<h4>/random-dog</h4> página que consome api random-dog, com botão refresh que mostra um cachorro aleatório
 
-### Requisitos da aplicação e de código
 
-- Interface amigável, bonita e limpa
-- Responsividade
-- Clean Code
+<h2>Tecnologias utilizadas</h2>
+<h3>
+<img src="https://user-images.githubusercontent.com/25181517/182884177-d48a8579-2cd0-447a-b9a6-ffc7cb02560e.png"
+         width="26" height="26"/>
+      MongoDB
+</h3>
 
-### Ferramentas e Stack a ser utilizado
+<h3>
+    <img src="https://user-images.githubusercontent.com/25181517/202896760-337261ed-ee92-4979-84c4-d4b829c7355d.png" width="26" height="26"/>
+Tailwind CSS
+</h3>
 
-- ReactJS para o frontend
-- NodeJS (com ou sem frameworks) ou Golang para o backend
-- MongoDB
-- TypeScript
-- HTML e CSS
+<h3>
+  <img src="https://user-images.githubusercontent.com/84795317/212142586-6f5afb82-c5dc-4dad-bd1b-f36d1bfa174d.png" width="26" height="26"/>
+Docker
+</h3>
+<h3>
+    <img src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" width="26" height="26"/>
+NodeJS
+</h3>
 
-### Aprimoramentos adicionais da aplicação (opcional)
+<h3>
+    <img src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" width="26" height="26"/>
+Typescript
+</h3>
 
-A aplicação criada para o desafio pode ser aprimorada com recursos pensados por você. A seguir, foram listadas algumas sugestões do que poderia ser feito:
+<h3>
+    <img src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" width="26" height="26"/>
+Javascript
+</h3>
 
-- Testes
-- Documentação
+<h3>
+    <img src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" width="26" height="26"/>
+ReactJS
+</h3>
 
-### Mas, afinal, quais ferramentas a Sharenergy utiliza?
+<h3>
+    <img src="https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png" width="26" height="26"/>
+Express
+</h3>
+<h3>
+    <img src="https://user-images.githubusercontent.com/25181517/201476472-d2f5f644-cfc9-43e5-96d3-c8f40f18b5cb.png" width="26" height="26"/>
+Chai
+</h3>
+<h3>
+    <img src="https://user-images.githubusercontent.com/25181517/201476630-f47cfff6-fdee-4ee1-9092-1793b71b1ca3.png" width="26" height="26"/>
+Mocha
+</h3>
 
-* [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) e [Typescript](https://www.typescriptlang.org/)
-* Front-end: [ReactJS](https://reactjs.org/) e [React Native](https://reactnative.dev/)
-* Back-end: [Node.js](https://nodejs.org/en/), [NestJS](https://nestjs.com/) e [Go](https://golang.org/)
-* Banco de dados: [MongoDB](https://www.mongodb.com/) do lado do servidor e [Minimongo](https://guide.meteor.com/collections.html) do lado do cliente (cache)
-* Gerenciamento de Containers: [Docker](https://www.docker.com/)
-* Gerenciamento de Repositórios: [NX](https://nx.dev/)
-* UI: [Tailwind CSS](https://tailwindcss.com/) e [Material-UI V4](https://v4.mui.com/)
-* Sistema Operacional (principal): [Linux](https://www.linux.org/), também sendo possível utilizar o [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/) (WSL)
 
-## O que devo entregar?
-
-Esperamos de você duas entregas: o código no GitHub e um vídeo explicativo no YouTube.
-
-### Instruções
-
-- Faça um fork desse repositório.
-- Em seguida, crie uma branch, cujo nome é o seu nome completo, no seguinte formato: meu-nome-completo.
-- Resolva o desafio realizando versionamento local e remoto. Fique à vontade em criar outras branches durante o desenvolvimento do código.
-- Inclua no README.md uma breve instrução de instalação e de execução da aplicação criada.
-- Faça um vídeo que explique o que você fez no desafio, com duração aproximada de 5 minutos. A facecam é opcional, mas bem-vinda. O vídeo deve ser postado no YouTube (pode deixar como não listado) e seu link deve ser colocado no README.md.
-- Ao finalizar o desafio, faça um pull request de sua branch para esse repositório.
-
-### Prazo limite de entrega
-
-O pull request com sua solução do desafio deve ser feito até a data especificada no corpo do email que você recebeu com a descrição do desafio.
