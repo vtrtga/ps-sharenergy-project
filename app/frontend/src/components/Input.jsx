@@ -17,7 +17,7 @@ function Input({ onChange, text, placeHolder, type, value, name }) {
           name={ name }
           type={ type }
           value={ value }
-          className="form-control block border-solid border-2 rounded-md m-3 p-2 outline-black"
+          className="form-control block border-solid border-2 rounded-md mx-auto my-6 p-2 outline-black"
           placeholder={ placeHolder }
           onChange={ onChange }
         />

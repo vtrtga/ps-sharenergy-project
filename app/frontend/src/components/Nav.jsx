@@ -12,14 +12,14 @@ function Nav() {
   };
 
   return (
-    <nav className="flex flex-wrap items-center justify-between bg-stone-800 text-white md: w-full shadow">
+    <nav className="md: flex flex-wrap relative items-center justify-between bg-stone-800 shadow-xl text-white w-full text-sm">
       <span className="md: hidden">
         Logged as
         {' '}
         { username }
       </span>
-      <div className="container m-auto flex justify-between items-center text-grey-700">
-        <ul className="md: flex items-center pr-10 text-base font-semibold">
+      <div className="block m-auto justify-between items-center text-grey-700 font-mono">
+        <ul className="flex items-center pr-10 text-base font-semibold">
           <li className="hover:bg-gray-200 py-4 px-6 cursor-pointer">
             <button onClick={ () => navigate('/home') } type="button">Home</button>
           </li>
@@ -27,11 +27,14 @@ function Nav() {
             <button onClick={ () => navigate('/customers') } type="button">Customers</button>
           </li>
           <li className="hover:bg-gray-200 py-4 px-6 cursor-pointer">
-            <button type="button">Page</button>
+            <button type="button" onClick={ () => navigate('/http-cat') }>Http Cats</button>
+          </li>
+          <li>
+            <Button text="Logout" onClick={ handleOnLogout } />
           </li>
         </ul>
       </div>
-      <Button text="Logout" onClick={ handleOnLogout } />
+
     </nav>
   );
 }

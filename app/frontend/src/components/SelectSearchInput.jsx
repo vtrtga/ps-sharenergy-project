@@ -1,10 +1,11 @@
+/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-function SelectSearchInput({ onChange, styles, value, text }) {
+function SelectSearchInput({ onChange, value, text }) {
   return (
-    <div>
-      <label htmlFor="selectInput" className="p-2 m-2">
+    <div className="md: my-5 mx-5 w-auto h-auto">
+      <label htmlFor="selectInput" className="md: p-4 h-auto w-auto">
         {
           text
         }
@@ -12,7 +13,7 @@ function SelectSearchInput({ onChange, styles, value, text }) {
           value={ value }
           id="selectInput"
           onChange={ onChange }
-          className={ styles }
+          className="md: form-control block border-solid border-2 rounded-md mx-auto p-2 w-8/12 outline-black text-center"
         >
           <option value="firstName">first name</option>
           <option value="userName">username</option>
