@@ -29,6 +29,9 @@ function Nav() {
           <li className="hover:bg-gray-200 py-4 px-6 cursor-pointer">
             <button type="button" onClick={ () => navigate('/http-cat') }>Http Cats</button>
           </li>
+          <li className="hover:bg-gray-200 py-4 px-6 cursor-pointer">
+            <button type="button" onClick={ () => navigate('/random-dog') }>Random Dog</button>
+          </li>
           <li>
             <Button text="Logout" onClick={ handleOnLogout } />
           </li>
