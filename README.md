@@ -43,6 +43,11 @@ o frontend React e o backend com NodeJS nas portas 27017, 3000 e 3001 respectiva
 
 Para subir os containers utilizar os seguintes comandos:
 <h5>Primeiramente:</h5> 
+Abrir diretório frontend e back end, instalando as dependencias com o comando:
+```bash
+npm install
+```
+
 Utilize o comando docker-compose para fazer build do container
 
 ```bash
