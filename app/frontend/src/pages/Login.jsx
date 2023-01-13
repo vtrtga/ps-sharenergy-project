@@ -33,8 +33,8 @@ function Login() {
   }, []);
   return (
     <section className="h-screen md:justify-center">
-      <div className="flex px-6 text-gray-800 xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
-        <form className="border-double border-2 rounded-2xl">
+      <div className="md: flex text-gray-800 xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
+        <form className="md: border-double border-2 rounded-2xl p-8">
           <div className="blockflex-row items-center justify-center lg:justify-start md:content-center">
             <p className="text-lg text-center mb-5 mr-4 m-2">Login</p>
             <Input
@@ -48,12 +48,12 @@ function Login() {
               text="Password"
               type="password"
             />
-            <label className="m-1" htmlFor="checkbox">
+            <label className="m-3" htmlFor="checkbox">
               <input type="checkbox" checked={ isChecked } onClick={ () => setIsChecked(!isChecked) } className="m-1" />
               Remember me
             </label>
             {
-              invalidCredentials ? (<p>Invalid username or password</p>) : null
+              invalidCredentials ? (<p className="text-center m-2 text-red-600 font-serif">Invalid username or password.</p>) : null
             }
             <Button text="Submit" onClick={ requestLogin } />
           </div>

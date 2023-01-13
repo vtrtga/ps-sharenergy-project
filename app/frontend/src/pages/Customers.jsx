@@ -56,7 +56,7 @@ function Customers() {
   const opt = ['male', 'female', 'non binary'];
   const tableHead = ['Name', 'Birth date', 'Email', 'Phone', 'Address', 'CPF'];
   return (
-    <div>
+    <div className="">
       <Nav />
       <form className="flex md: m-auto">
         <section className="md: mx-auto mt-8 shadow-md rounded-md p-5">

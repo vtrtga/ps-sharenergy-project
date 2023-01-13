@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Button from './Button';
 
 function Nav() {
-  const username = localStorage.getItem('username');
   const navigate = useNavigate();
   const handleOnLogout = () => {
     localStorage.clear();
@@ -12,14 +11,9 @@ function Nav() {
   };
 
   return (
-    <nav className="md: flex flex-wrap relative items-center justify-between bg-stone-800 shadow-xl text-white w-full text-sm">
-      <span className="md: hidden">
-        Logged as
-        {' '}
-        { username }
-      </span>
-      <div className="block m-auto justify-between items-center text-grey-700 font-mono">
-        <ul className="flex items-center pr-10 text-base font-semibold">
+    <nav className="shadow-md flex justify-between lg:justify-center">
+      <div className="hidden lg:block">
+        <ul className="flex justify-around">
           <li className="hover:bg-gray-200 py-4 px-6 cursor-pointer">
             <button onClick={ () => navigate('/home') } type="button">Home</button>
           </li>
@@ -32,12 +26,17 @@ function Nav() {
           <li className="hover:bg-gray-200 py-4 px-6 cursor-pointer">
             <button type="button" onClick={ () => navigate('/random-dog') }>Random Dog</button>
           </li>
-          <li>
-            <Button text="Logout" onClick={ handleOnLogout } />
-          </li>
         </ul>
       </div>
+      <div className="flex justify-center lg:hidden border-solid h-8 w-10 border rounded-md m-3 shadow-lg">
+        <div className="space-y-2">
+          <span className="block w-8 h-1 mx-auto my-1 bg-gray-600" />
+          <span className="block w-8 h-1 mx-auto my-1 bg-gray-600" />
+          <span className="block w-8 h-1 mx-auto my-1 bg-gray-600" />
+        </div>
+      </div>
 
+      <Button text="Logout" onClick={ handleOnLogout } />
     </nav>
   );
 }

@@ -49,72 +49,72 @@ function Row({ data }) {
       {
         onEdit
         ? (
-          <td>
+          <td className="border-2 border-slate-500 border-solid overflow-auto">
         <input onChange={ ({ target: { value } }) => setName(value) } value={ name } className="w-44" />
           </td>
         )
         : (
-          <td>{ data.name }</td>
+          <td className="border-2 border-slate-500 border-solid overflow-auto">{ data.name }</td>
         )
       }
       {/* coluna Birth Date */}
       {
         onEdit
         ? (
-          <td>
+          <td className="border-2 border-slate-500 border-solid overflow-auto">
             <input onChange={ ({ target: { value } }) => setBirthDate(value) } className="w-24" value={ birthDate } />
           </td>
         )
         : (
-          <td>{ data.birthDate }</td>
+          <td className="border-2 border-slate-500 border-solid overflow-auto">{ data.birthDate }</td>
         )
       }
       {/* coluna Email */}
       {
         onEdit
         ? (
-          <td>
+          <td className="border-2 border-slate-500 border-solid overflow-auto">
             <input onChange={ ({ target: { value } }) => setEmail(value) } className="w-48" value={ email } />
           </td>
         )
         : (
-          <td>{ data.email }</td>
+          <td className="border-2 border-slate-500 border-solid overflow-auto">{ data.email }</td>
         )
       }
       {/* coluna Phone */}
       {
         onEdit
         ? (
-          <td>
+          <td className="border-2 border-slate-500 border-solid overflow-auto">
             <input onChange={ ({ target: { value } }) => setPhone(value) } className="w-28" value={ phone } />
           </td>
         )
         : (
-          <td>{ data.phone }</td>
+          <td className="border-2 border-slate-500 border-solid overflow-auto">{ data.phone }</td>
         )
       }
       {/* coluna Address */}
       {
         onEdit
         ? (
-          <td>
+          <td className="border-2 border-slate-500 border-solid overflow-auto">
             <input onChange={ ({ target: { value } }) => setAddress(value) } value={ address } />
           </td>
         )
         : (
-          <td>{ data.address }</td>
+          <td className=" border-2 border-slate-500 border-solid overflow-auto">{ data.address }</td>
         )
       }
       {/* coluna CPF */}
       {
         onEdit
         ? (
-          <td>
+          <td className=" border-2 border-slate-500 border-solid overflow-auto">
             <input onChange={ ({ target: { value } }) => setCpf(value) } className="w-36" value={ cpf } />
           </td>
         )
         : (
-          <td>{ data.cpf }</td>
+          <td className="border-2 border-slate-500 border-solid overflow-auto">{ data.cpf }</td>
         )
       }
       <td>

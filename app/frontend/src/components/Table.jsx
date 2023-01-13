@@ -5,24 +5,24 @@ import React from 'react';
 // import ButtonEdit from './ButtonEdit';
 import Row from './Row';
 
-function Table({ tableHead, data }) {
+function Table({ tableHead, data, isLoading }) {
   return (
-    <div>
-      <table className="table-auto md: m-auto bg-blue-500 rounded-md">
+    <div className="overflow-auto">
+      <table className="border-collapse text-xs border border-slate-400 m-auto font-sans">
         <thead className="">
           <tr>
 
             {
               tableHead.map((item, i) => (
-                <th className="md:" key={ i }>{item}</th>
+                <th className="border-slate-300" key={ i }>{item}</th>
               ))
             }
           </tr>
         </thead>
-        <tbody className="">
+        <tbody className="border-slate-800">
           {
             data.map((d, i) => (
-              <Row data={ d } key={ i } />
+              <Row isLoading={ isLoading } data={ d } key={ i } />
             ))
           }
         </tbody>

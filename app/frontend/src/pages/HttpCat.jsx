@@ -14,7 +14,7 @@ function HttpCats() {
     setIsLoading(false);
   };
   return (
-    <div>
+    <div className="">
       <Nav />
       <Input
         placeHolder="Enter a status code"

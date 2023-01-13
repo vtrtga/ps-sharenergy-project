@@ -4,7 +4,7 @@ import Users from '../components/Users';
 
 function Home() {
   return (
-    <div>
+    <div className="">
       <Nav />
       <Users />
     </div>
