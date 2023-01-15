@@ -8,7 +8,8 @@ module.exports = {
       backgroundImage: {
         'delete': "url('/src/images/delete.png')",
         'edit': "url('/src/images/edit.png')",
-        'save': "url('/src/images/save.png')"
+        'save': "url('/src/images/save.png')",
+        'close': "url('/src/images/closeIcon.png')"
       }
     },
   },

@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import GenericSelectInput from '../components/GenericSelectInput';
 import Input from '../components/Input';
@@ -8,6 +9,8 @@ import Table from '../components/Table';
 import { getMethod, postMethod } from '../services/usersAndCustomers';
 
 function Customers() {
+  const navigate = useNavigate();
+  // const [isLoggedIn, SetIsLoggedIn] = useState(true);
   const [customers, setCustomers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
@@ -23,13 +26,19 @@ function Customers() {
 
   useEffect(() => {
     const fetchCustomers = async () => {
-      await getMethod('/customer').then((res) => setCustomers(res));
-      setIsLoading(false);
+      try {
+        await getMethod('/customer').then((res) => setCustomers(res));
+        setIsLoading(false);
+      } catch (e) {
+        console.error(e);
+        navigate('/login');
+      }
     };
 
     fetchCustomers();
   }, []);
 
+  // eslint-disable-next-line no-unused-expressions, react-hooks/rules-of-hooks
   const handleOnNewCustomer = (event) => {
     const { name, value } = event.target;
     setNewCustomer((prev) => ({

@@ -24,18 +24,22 @@ function Users() {
 
   useEffect(() => {
     const fetchItems = async () => {
-      await fetch('https://randomuser.me/api/?results=90')
-        .then((res) => res.json()).then((res) => setUsers(res.results
-          .map(({ name, dob, login, email, picture }) => ({
-            firstName: name.first,
-            lastName: name.last,
-            age: dob.age,
-            userName: login.username,
-            email,
-            image: picture.thumbnail,
-          }))));
-      setIsLoading(false);
-      setFilteredUsers(users);
+      try {
+        await fetch('https://randomuser.me/api/?results=90')
+          .then((res) => res.json()).then((res) => setUsers(res.results
+            .map(({ name, dob, login, email, picture }) => ({
+              firstName: name.first,
+              lastName: name.last,
+              age: dob.age,
+              userName: login.username,
+              email,
+              image: picture.thumbnail,
+            }))));
+        setIsLoading(false);
+        setFilteredUsers(users);
+      } catch (e) {
+        console.error(e);
+      }
     };
     fetchItems();
   }, [setUsers, isLoading]);
@@ -70,6 +74,8 @@ function Users() {
     const { value } = target;
     setSearchInputValue(value);
   };
+
+  // eslint-disable-next-line no-unused-expressions
 
   return (
     <div className="md: w-full m-auto border-l-blue-800 border-solid border-2">
