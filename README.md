@@ -100,6 +100,10 @@ API Endpoints:
 imagem referente ao código 404. </br>
 <h4>/random-dog</h4> página que consome api random-dog, com botão refresh que mostra um cachorro aleatório
 
+<h2>Informações adicionais:</h2>
+O projeto foi desenvolvido visando utilizar alguns conceitos SOLID no backend e componentização do React no frontend. </br>
+Para isso, utilizei a biblioteca Mongoose para desenvolver a API baseada em programação orientada a objetos.
+A página está responsiva, com elementos de estilo feitos utilizando TailwindCSS.
 
 <h2>Tecnologias utilizadas</h2>
 <h3>
