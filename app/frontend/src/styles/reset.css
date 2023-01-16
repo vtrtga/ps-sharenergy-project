@@ -1,8 +1,3 @@
 html, #root, body, .App {
   height: 100%;
 }
-
-.btn-dog {
-  margin-left: 33.333%;
-  margin-right: 33.333%;
-}

@@ -4,7 +4,7 @@ import Button from '../components/Button';
 import Nav from '../components/Nav';
 
 function HttpCats() {
-  const [currentCat, setCurrentCat] = useState('https://http.cat/200');
+  const [currentCat, setCurrentCat] = useState('https://http.cat/404');
   const [code, setCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -22,9 +22,14 @@ function HttpCats() {
       />
       <Button text="Call cat!" onClick={ handleOnClick } />
       {
-        isLoading ? <p>Loading...</p> : (
+        isLoading ? <div className="flex w-full text-center">Loading...</div> : (
           <div>
-            <img src={ currentCat } alt="http-cat" className="md: h-2/5 w-3/4 m-auto" />
+            <img
+              src={ currentCat }
+              alt="http-cat"
+              className="md: h-96
+              w-auto m-auto"
+            />
           </div>
         )
       }

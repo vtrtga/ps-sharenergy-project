@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import Button from '../components/Button';
 import Nav from '../components/Nav';
 
 function RandomDog() {
@@ -25,27 +24,38 @@ function RandomDog() {
     <div className="">
       <Nav />
       <div className="">
+        <div className="flex btn-dog justify-center w-full mx-46">
+          <button
+            type="button"
+            onClick={ sendRequest }
+            className="bg-blue-500
+            absolute z-20 w-36 h-11 mt-8 rounded-lg md:mx-auto"
+          >
+            Call the puppy
+          </button>
+        </div>
 
         {
-          isLoading ? <p>Loading...</p>
+          isLoading ? <div className="mx-auto w-full text-center mt-40">Loading...</div>
             : (
               <section className="h-1/3 w-2/3 mx-auto">
                 {
                   currentDog && (
-                    <img
-                      src={ currentDog }
-                      className="md: w-1/2 h-2/6 rounded-3xl mx-auto my-5"
-                      alt="random-dog"
-                    />
+                    <div className="absolute w-full md:flex mx-8">
+                      <img
+                        src={ currentDog }
+                        className="
+                      w-1/2 h-auto rounded-3xl lg:mx-28 mt-32 my-5"
+                        alt="random-dog"
+                      />
+                    </div>
                   )
                 }
               </section>
             )
         }
       </div>
-      <div className="absolute btn-dog">
-        <Button text="Click here to call the puppy" onClick={ sendRequest } />
-      </div>
+
     </div>
   );
 }

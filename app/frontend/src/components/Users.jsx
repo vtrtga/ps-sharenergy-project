@@ -63,7 +63,6 @@ function Users() {
         }
         return [...users];
       });
-      console.log(filtered);
       if (filtered) {
         setFilteredUsers([...filtered]);
       }

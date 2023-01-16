@@ -30,7 +30,7 @@ function Login() {
   // eslint-disable-next-line no-unused-expressions
   useEffect(() => {
     isChecked ? localStorage.setItem('userInfos', JSON.stringify({ username, password })) : localStorage.removeItem('userInfos');
-  }, []);
+  }, [isChecked]);
   return (
     <section className="h-screen md:justify-center">
       <div className="md: flex text-gray-800 xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
@@ -49,7 +49,7 @@ function Login() {
               type="password"
             />
             <label className="m-3" htmlFor="checkbox">
-              <input type="checkbox" checked={ isChecked } onClick={ () => setIsChecked(!isChecked) } className="m-1" />
+              <input type="checkbox" checked={ isChecked } readOnly onClick={ () => setIsChecked(!isChecked) } className="m-1" />
               Remember me
             </label>
             {
