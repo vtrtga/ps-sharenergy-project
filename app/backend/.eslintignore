@@ -1,0 +1,4 @@
+node_modules
+db/seed.js
+build
+tests
